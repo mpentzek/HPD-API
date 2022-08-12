@@ -1,0 +1,64 @@
+{
+  "name" : "Hospital Patient Data",
+  "path" : "/hpd",
+  "state" : "published",
+  "version" : "1.0",
+  "organization" : "API Development",
+  "apiDefinition" : "Hospital Patient Data.json",
+  "summary" : "Hospital Patient Data API",
+  "backendBasepath" : "http://localhost:8087/api",
+  "image" : "api-image.jpg",
+  "securityProfiles" : [ {
+    "name" : "_default",
+    "isDefault" : true,
+    "devices" : [ {
+      "name" : "OAuth (External)",
+      "type" : "oauthExternal",
+      "order" : 1,
+      "properties" : {
+        "tokenStore" : "tokeninfo",
+        "accessTokenLocation" : "HEADER",
+        "authorizationHeaderPrefix" : "Bearer",
+        "accessTokenLocationQueryString" : "",
+        "scopesMustMatch" : "Any",
+        "scopes" : "resource.READ, resource.WRITE",
+        "removeCredentialsOnSuccess" : "true",
+        "implicitGrantEnabled" : "true",
+        "implicitGrantLoginEndpointUrl" : "http://api-env.demo.axway.com:8084/realms/cuore/protocol/openid-connect/auth",
+        "implicitGrantLoginTokenName" : "access_token",
+        "authCodeGrantTypeEnabled" : "true",
+        "authCodeGrantTypeRequestEndpointUrl" : "http://api-env.demo.axway.com:8084/realms/cuore/protocol/openid-connect/auth",
+        "authCodeGrantTypeRequestClientIdName" : "client_id",
+        "authCodeGrantTypeRequestSecretName" : "client_secret",
+        "authCodeGrantTypeTokenEndpointUrl" : "http://api-env.demo.axway.com:8084/realms/cuore/protocol/openid-connect/token",
+        "authCodeGrantTypeTokenEndpointTokenName" : "access_code",
+        "useClientRegistry" : "true",
+        "subjectSelector" : "${oauth.token.client_id}",
+        "oauth.token.client_id" : "${oauth.token.client_id}",
+        "oauth.token.scopes" : "${oauth.token.scopes}",
+        "oauth.token.valid" : "${oauth.token.valid}",
+        "oauth.token" : "${oauth.token}"
+      }
+    } ]
+  } ],
+  "authenticationProfiles" : [ {
+    "name" : "_default",
+    "isDefault" : true,
+    "parameters" : {
+      "username" : "Es4YJ7hSLn3PQqN8Zfl7810Aso8/uPfg",
+      "_id_" : 0
+    },
+    "type" : "http_basic"
+  } ],
+  "customProperties" : {
+    "customPropertyUsePDP" : "true",
+    "customPropertyPDPRulePath" : "cuore"
+  },
+  "applications" : [ {
+    "name" : "Hospital Patient Data App",
+    "enabled" : true,
+    "state" : "approved",
+    "appScopes" : [ ]
+  } ],
+  "clientOrganizations" : [ "API Development", "Vaudois Spital" ]
+}

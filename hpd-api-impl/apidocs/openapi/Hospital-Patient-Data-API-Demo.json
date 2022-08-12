@@ -1,0 +1,164 @@
+{
+  "swagger": "2.0",
+  "x-stoplight": {
+    "id": "9sqamh70ixmt1"
+  },
+  "info": {
+    "title": "Hospital Patient Data API (Demo)",
+    "version": "1.0",
+    "description": "Demo API - Hospital Patient Data",
+    "contact": {
+      "email": "mpentzek@axway.com",
+      "name": "Markus Penztek"
+    }
+  },
+  "host": "localhost:3000",
+  "schemes": [
+    "http"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "paths": {
+    "/patients/{patientid}": {
+      "get": {
+        "summary": "get patient by id",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            },
+            "examples": {
+              "Patient Example": {
+                "id": "1",
+                "patient": "Bob",
+                "doctor": "Jones",
+                "notes": "All good"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "operationId": "get-patient",
+        "description": "Retrieve distinct patient data"
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "name": "patientid",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "create new patient",
+        "operationId": "post-patients-patientid",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Add a patient to HPD"
+      },
+      "delete": {
+        "summary": "delete a patient",
+        "operationId": "delete-patients-patientid",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "description": "Deletes a Patient from HPD"
+      },
+      "put": {
+        "summary": "update a patient",
+        "operationId": "put-patients-patientid",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Updates a patients data"
+      }
+    },
+    "/patients": {
+      "get": {
+        "summary": "get a list of patients",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Patient"
+              }
+            },
+            "examples": {
+              "example-1": [
+                {
+                  "id": "1",
+                  "patient": "Emma",
+                  "doctor": "Jones",
+                  "notes": "All good"
+                }
+              ]
+            }
+          }
+        },
+        "operationId": "get-patients",
+        "description": "Get a list of patients"
+      }
+    }
+  },
+  "definitions": {
+    "Patient": {
+      "title": "Patient",
+      "x-stoplight": {
+        "id": "zk042bo0sj11p"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "patient": {
+          "type": "string"
+        },
+        "doctor": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "x-examples": {
+        "example-1": {
+          "id": "string",
+          "patient": "string",
+          "doctor": "string",
+          "notes": "string"
+        }
+      }
+    }
+  },
+  "basePath": "/hpd"
+}

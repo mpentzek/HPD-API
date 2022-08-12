@@ -1,0 +1,23 @@
+triggers:
+  openapi-hospital-patient-data-api-demo-1:
+    name: get-patient
+    parameters:
+      method: get-patient
+    enabled: true
+    invoke:
+      flow: get-patient
+      parameters:
+        request: $.request
+        config: $.config
+        env: $.env
+  openapi-hospital-patient-data-api-demo-2:
+    name: get-patients
+    parameters:
+      method: get-patients
+    enabled: true
+    invoke:
+      flow: get-patients
+      parameters:
+        request: $.request
+        config: $.config
+        env: $.env
